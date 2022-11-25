@@ -1,0 +1,34 @@
+.button {
+  background-color: var(--secondary);
+  cursor: pointer;
+  border: 1px solid var(--warning);
+  align-self: center;
+  border-radius: 10px;
+  font-size: 20px;
+  color: var(--text);
+  padding: 10px 20px;
+  /* min-width: 40px; */
+
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.primary {
+  background-color: var(--secondary);
+  border: 1px solid var(--warning);
+  color: var(--text);
+}
+
+.warning {
+  background-color: var(--warning);
+  border: 1px solid var(--text);
+  color: var(--primary-light);
+}
+
+.danger {
+  background-color: var(--danger);
+  border: 1px solid var(--text);
+  color: var(--primary-light);
+}

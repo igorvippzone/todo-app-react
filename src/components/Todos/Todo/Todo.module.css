@@ -1,0 +1,39 @@
+
+.todo {
+  border: 2px solid var(--primary-light);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+background-color: var(--primary);
+
+}
+
+.complete{
+opacity: .5;
+}
+.overdue,
+.overdue .header{
+  border-color: var(--danger);
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--secondary);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.deadline{
+  margin-left: auto;
+}
+
+.checkbox{
+  cursor: pointer;
+}
+
+.button-group {
+  align-self: flex-end;
+  display: flex;
+  gap: 20px;
+}
