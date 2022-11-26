@@ -5,6 +5,7 @@ import { storage } from "../../../Firebase";
 
 import Button from "../../UI/Button/Button";
 import Img from "../../UI/Img/Img";
+import MyLink from "../../UI/MyLink/MyLink";
 import s from "./Todo.module.css";
 
 const currentDate = dayjs();
@@ -54,9 +55,7 @@ const Todo = ({ onRemove, onComplete, onEdit, ...props }) => {
         {fileUrl && (
           <div>
             {isImage && <Img url={fileUrl} alt="Картинка" />}
-            <a href={fileUrl} target="_blank" rel="noopener">
-              Скачать
-            </a>
+            <MyLink url={fileUrl}>Скачать</MyLink>
           </div>
         )}
       </div>

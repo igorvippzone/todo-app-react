@@ -30,3 +30,16 @@
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 767px) {
+  .modal{
+    width: calc(100% - 20px);
+/* height: 90%; */
+
+  
+    background-color: var(--primary-light);
+    color: var(--text);
+    padding: 20px;
+
+  }
+}
