@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-import { storage } from "../../../Firebase";
+import { storage } from "../../../firebase";
 
 import { ref, uploadBytes } from "firebase/storage";
 
@@ -10,6 +10,7 @@ import Input from "../../UI/Input/Input";
 import Modal from "../../UI/Modal/Modal";
 
 import s from "./AddTodo.module.css";
+import TextArea from "../../UI/TextArea/TextArea";
 
 const AddTodo = ({ onCreateTodo, onCloseModal }) => {
   const [title, setTitle] = useState("");
@@ -77,12 +78,12 @@ const AddTodo = ({ onCreateTodo, onCloseModal }) => {
           onChange={titleHandler}
         />
 
-        <textarea
+        <TextArea
           id="description"
           value={description}
           placeholder="Описание..."
           onChange={descriptionHandler}
-        ></textarea>
+        ></TextArea>
 
         <Input
           id="deadline"
@@ -94,13 +95,13 @@ const AddTodo = ({ onCreateTodo, onCloseModal }) => {
 
         <Input
           id="file"
-          label="выбрать картинку"
+          label="Выберите файл"
           type="file"
           // accept="image/*"
           onChange={fileHandler}
         />
 
-        <Button typeStyle="primary" type="submit">
+        <Button typeStyle="primary" type="submit" className={s.addButton}>
           Добавить
         </Button>
       </form>

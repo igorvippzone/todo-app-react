@@ -1,3 +1,11 @@
 .link{
-  
+  color: var(--secondary);
+  font-weight:700;
+  text-decoration: none;
+  cursor: pointer;
+
+  transition: color .3s;
+}
+.link:hover{
+  color: var(--warning)
 }

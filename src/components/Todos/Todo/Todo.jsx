@@ -1,9 +1,10 @@
 import dayjs from "dayjs";
 import { getDownloadURL, ref } from "firebase/storage";
 import React, { useEffect, useState } from "react";
-import { storage } from "../../../Firebase";
+import { storage } from "../../../firebase";
 
 import Button from "../../UI/Button/Button";
+import Date from "../../UI/Date/Date";
 import Img from "../../UI/Img/Img";
 import MyLink from "../../UI/MyLink/MyLink";
 import s from "./Todo.module.css";
@@ -33,7 +34,6 @@ const Todo = ({ onRemove, onComplete, onEdit, ...props }) => {
       .catch((err) => console.error("Файл не найден", err));
   }, [file]);
 
-  console.log("fileUrl ", fileUrl);
   return (
     <li
       className={`${s.todo} ${isDone && s.complete} ${
@@ -42,15 +42,11 @@ const Todo = ({ onRemove, onComplete, onEdit, ...props }) => {
     >
       <div>
         <div className={s.header}>
-          <div>{title}</div>
-          <div className={s.deadline}>{deadLine}</div>
-
-          <Button typeStyle="primary" onClick={() => onComplete(id)}>
-            {isDone ? "Возобновить" : "Завершить"}
-          </Button>
+          <div className={s.title}>{title}</div>
+          {deadLine && <Date className={s.deadline} date={deadLine} />}
         </div>
 
-        <div>{description}</div>
+        <div className={s.description}>{description}</div>
 
         {fileUrl && (
           <div>
@@ -60,12 +56,21 @@ const Todo = ({ onRemove, onComplete, onEdit, ...props }) => {
         )}
       </div>
 
+      <MyLink url={"fileUrl"}>Скачать</MyLink>
+
       <div className={s["button-group"]}>
-        <Button typeStyle="warning" onClick={() => onEdit(id)}>
-          edit
+        <Button typeStyle="primary" onClick={() => onComplete(id)}>
+          {isDone ? "Возобновить" : "Завершить"}
         </Button>
-        <Button typeStyle="danger" onClick={() => onRemove(id, file)}>
-          delete
+        <Button typeStyle="warning" onClick={() => onEdit(id)}>
+          Изменить
+        </Button>
+        <Button
+          typeStyle="danger"
+          className={s.deleteBtn}
+          onClick={() => onRemove(id, file)}
+        >
+          Удалить
         </Button>
       </div>
     </li>

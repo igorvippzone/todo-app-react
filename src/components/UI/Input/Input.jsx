@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./Input.module.css";
 const Input = ({ label, value, id, onChange, type, accept }) => {
+
   return (
     <div className={s.input}>
       <label htmlFor={id}>{label}</label>

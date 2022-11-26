@@ -23,4 +23,6 @@ export const setFetchTodos = (todos) =>
     headers: {
       "Content-Type": "application/json",
     },
+  }).catch(err=>{
+    console.error('Нет связи с сервером ', err.message);
   });

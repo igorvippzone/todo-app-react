@@ -1,0 +1,13 @@
+.textarea {
+  width: 100%;
+  min-height: 100px;
+  font-size: 18px;
+  padding: 10px;
+}
+
+
+@media (max-width: 767px) {
+  .textarea {
+    font-size: 16px;
+  }
+}

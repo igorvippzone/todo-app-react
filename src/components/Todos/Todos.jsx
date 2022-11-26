@@ -1,6 +1,6 @@
 import { deleteObject, ref } from "firebase/storage";
 import React, { useEffect, useState } from "react";
-import { setFetchTodos, storage } from "../../Firebase";
+import { setFetchTodos, storage } from "../../firebase";
 
 import Button from "../UI/Button/Button";
 import Loader from "../UI/Loader/Loader";
@@ -44,7 +44,7 @@ const Todos = () => {
       })
       .catch((err) => {
         setIsLoaded(false);
-        throw new Error(err);
+        console.error("Не могу получить данные", err.message);
       });
   }, []);
 
@@ -57,6 +57,11 @@ const Todos = () => {
   };
 
   const removeTodo = (id, fileUrl) => {
+    const confirmDeletedTodo = window.confirm(
+      "Вы точно хотите удалить задачу?"
+    );
+    if (!confirmDeletedTodo) return;
+
     if (fileUrl) {
       const imagesRef = ref(storage, fileUrl);
       deleteObject(imagesRef)

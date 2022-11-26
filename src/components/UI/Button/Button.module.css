@@ -5,14 +5,20 @@
   align-self: center;
   border-radius: 10px;
   font-size: 20px;
+  font-weight: 600;
   color: var(--text);
   padding: 10px 20px;
-  /* min-width: 40px; */
-
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  transition: background-color .3s, color .3s;
+}
+
+.button:hover,
+.button:active {
+  background-color: var(--primary-light);
 }
 
 .primary {
@@ -31,4 +37,17 @@
   background-color: var(--danger);
   border: 1px solid var(--text);
   color: var(--primary-light);
+}
+.danger:hover,
+.danger:active,
+.warning:hover,
+.warning:active {
+  color: var(--text);
+}
+@media (max-width: 767px) {
+  .button {
+    font-size: 14px;
+    color: var(--text);
+    padding: 5px 10px;
+  }
 }

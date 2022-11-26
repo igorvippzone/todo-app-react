@@ -1,20 +1,21 @@
-
 .todo {
   border: 2px solid var(--primary-light);
   padding: 20px;
   display: flex;
   flex-direction: column;
-background-color: var(--primary);
+  background-color: var(--primary);
 
 }
 
-.complete{
-opacity: .5;
+.complete {
+  opacity: .5;
 }
+
 .overdue,
-.overdue .header{
+.overdue .header {
   border-color: var(--danger);
 }
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -24,16 +25,32 @@ opacity: .5;
   margin-bottom: 10px;
 }
 
-.deadline{
+.deadline {
   margin-left: auto;
+  font-size: 16px;
+  color: var(--danger);
 }
 
-.checkbox{
+.title {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.description {
+  background-color: var(--primary-light);
+}
+
+.checkbox {
   cursor: pointer;
 }
 
 .button-group {
-  align-self: flex-end;
+
   display: flex;
   gap: 20px;
+  margin-top: 20px;
+}
+
+.deleteBtn {
+  margin-left: auto;
 }

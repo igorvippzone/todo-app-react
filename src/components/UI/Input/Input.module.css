@@ -3,11 +3,24 @@
   flex-direction: column;
 }
 .input label{
-  
+  font-size: 22px;
 }
 .input input{
   padding: 10px;
   font-size: 20px;
 }
 
+.input-file{
+  
+}
 
+
+@media (max-width: 767px) {
+  .input label{
+    font-size: 18px;
+  }
+  .input input{
+    font-size: 16px;
+  }
+
+}
