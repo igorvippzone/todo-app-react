@@ -1,8 +1,8 @@
-import dayjs from "dayjs";
-import { getDownloadURL, ref } from "firebase/storage";
 import React, { useEffect, useState } from "react";
-import { storage } from "../../../firebase";
+import dayjs from "dayjs";
 
+import { storage } from "../../../firebase";
+import { getDownloadURL, ref } from "firebase/storage";
 import Button from "../../UI/Button/Button";
 import Date from "../../UI/Date/Date";
 import Img from "../../UI/Img/Img";
@@ -55,8 +55,6 @@ const Todo = ({ onRemove, onComplete, onEdit, ...props }) => {
           </div>
         )}
       </div>
-
-      <MyLink url={"fileUrl"}>Скачать</MyLink>
 
       <div className={s["button-group"]}>
         <Button typeStyle="primary" onClick={() => onComplete(id)}>

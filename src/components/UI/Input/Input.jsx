@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./Input.module.css";
-const Input = ({ label, value, id, onChange, type, accept }) => {
 
+const Input = ({ label, value, id, onChange, type, accept, autoFocus }) => {
   return (
     <div className={s.input}>
       <label htmlFor={id}>{label}</label>
@@ -12,6 +12,7 @@ const Input = ({ label, value, id, onChange, type, accept }) => {
         type={type || "text"}
         onChange={onChange}
         accept={accept || ""}
+        autoFocus={autoFocus}
       />
     </div>
   );

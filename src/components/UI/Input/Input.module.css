@@ -4,6 +4,7 @@
 }
 .input label{
   font-size: 22px;
+  color: var(--secondary);
 }
 .input input{
   padding: 10px;

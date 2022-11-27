@@ -1,6 +1,7 @@
 import React from "react";
 
 import s from "./Button.module.css";
+
 const Button = ({ children, typeStyle, onClick, type, className }) => {
   let btnStyle = "";
   if (typeStyle === "primary") {
@@ -18,7 +19,6 @@ const Button = ({ children, typeStyle, onClick, type, className }) => {
       className={`${s.button} ${btnStyle} ${className}`}
       type={type || "button"}
       onClick={onClick}
-     
     >
       {children}
     </button>

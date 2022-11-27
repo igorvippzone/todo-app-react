@@ -4,33 +4,30 @@ import Button from "../Button/Button";
 
 import s from "./Modal.module.css";
 
-const Backdrop = ({onConfirm}) => {
-  return(
-    <div className={s.overlay} onClick={onConfirm}></div>
-  )
-}
+const Backdrop = ({ onClose }) => {
+  return <div className={s.overlay} onClick={onClose}></div>;
+};
 
-const ModalOverlay = ({ children, onConfirm }) => {
+const ModalOverlay = ({ children, onClose }) => {
   return (
-    // <div >
-      <div className={s.modal}>
-        {children}
-        <Button typeStyle="danger" onClick={onConfirm}>
-          Отмена
-        </Button>
-      </div>
-    // </div>
+    <div className={s.modal}>
+      {children}
+      <Button typeStyle="danger" onClick={onClose}>
+        Отмена
+      </Button>
+    </div>
   );
 };
 
-const Modal = ({ onConfirm, children }) => {
+const Modal = ({ onClose, children }) => {
   return (
-    <>{ReactDOM.createPortal(
-      <Backdrop onConfirm={onConfirm} />,
-      document.getElementById("modal")
-    )}
+    <>
       {ReactDOM.createPortal(
-        <ModalOverlay onConfirm={onConfirm} children={children} />,
+        <Backdrop onClose={onClose} />,
+        document.getElementById("modal")
+      )}
+      {ReactDOM.createPortal(
+        <ModalOverlay onClose={onClose} children={children} />,
         document.getElementById("modal")
       )}
     </>

@@ -64,13 +64,9 @@ const Todos = () => {
 
     if (fileUrl) {
       const imagesRef = ref(storage, fileUrl);
-      deleteObject(imagesRef)
-        .then(() => {
-          console.log("Удалили файл");
-        })
-        .catch((err) => {
-          console.log("Что-то пошло не так ", err);
-        });
+      deleteObject(imagesRef).catch((err) => {
+        console.log("Что-то пошло не так ", err);
+      });
     }
     const newTodos = todos.filter((todo) => todo.id !== id);
     setFetchTodos(newTodos);
@@ -117,14 +113,14 @@ const Todos = () => {
       {isCreateModal && (
         <AddTodo
           onCreateTodo={createTodo}
-          onCloseModal={() => setIsCreateModal((prev) => !prev)}
+          onClose={() => setIsCreateModal((prev) => !prev)}
         />
       )}
 
       {isEditModal && (
         <EditTodo
           onChangeTodo={changeTodo}
-          onCloseModal={() => setIsEditModal((prev) => !prev)}
+          onClose={() => setIsEditModal((prev) => !prev)}
           {...editMyTodo}
         />
       )}
