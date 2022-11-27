@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 
 import Button from "../../UI/Button/Button";
 import Input from "../../UI/Input/Input";
+import Loader from "../../UI/Loader/Loader";
 import TextArea from "../../UI/TextArea/TextArea";
 import s from "./FormTodo.module.css";
 
@@ -30,6 +31,7 @@ const FormTodo = ({
   description = "",
   deadline = "",
   buttonName = "Создать",
+  isLoading,
 }) => {
   const initialState = {
     title,
@@ -98,7 +100,7 @@ const FormTodo = ({
       )}
 
       <Button typeStyle="primary" type="submit" className={s.addButton}>
-        {buttonName}
+        {isLoading ? <Loader/> :buttonName}
       </Button>
     </form>
   );
