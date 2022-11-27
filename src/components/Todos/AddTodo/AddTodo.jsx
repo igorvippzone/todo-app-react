@@ -9,7 +9,7 @@ import FormTodo from "../FormTodo/FormTodo";
 const AddTodo = ({ onCreateTodo, onClose }) => {
   const [isLoading, setIsLoading] = useState(false);
   const createTodo = async (todo) => {
-    if (!todo.title.trim() && !todo.description.trim()) return;
+    if (!todo.title.trim() || !todo.description.trim()) return;
 
     setIsLoading(true);
     const id = uuidv4();

@@ -5,7 +5,7 @@ const EditTodo = ({ onClose, onChangeTodo, ...props }) => {
   const { title, description, deadLine } = props;
 
   const changeHandler = (todo) => {
-    if (!todo.title.trim() && !todo.description.trim()) return;
+    if (!todo.title.trim() || !todo.description.trim()) return;
 
     const changeTodo = {
       title: todo.title,
