@@ -7,31 +7,26 @@ import Modal from "../../UI/Modal/Modal";
 import FormTodo from "../FormTodo/FormTodo";
 
 const AddTodo = ({ onCreateTodo, onClose }) => {
-  const createTodo = async (
-    enteredTitle,
-    enteredDescription,
-    enteredDeadline,
-    selectFile
-  ) => {
-    if (!enteredTitle.trim() && !enteredDescription.trim()) return;
+  const createTodo = async (todo) => {
+    if (!todo.title.trim() && !todo.description.trim()) return;
 
     const id = uuidv4();
     let file = null;
-    if (selectFile) {
-      file = `${id}/${selectFile?.name}`;
+    if (todo.selectFile) {
+      file = `${id}/${todo.selectFile?.name}`;
       const imagesRef = ref(storage, file);
 
       try {
-        await uploadBytes(imagesRef, selectFile);
+        await uploadBytes(imagesRef, todo.selectFile);
       } catch (error) {
         console.error(error);
       }
     }
 
     const newTodo = {
-      title: enteredTitle,
-      description: enteredDescription,
-      deadLine: enteredDeadline,
+      title: todo.title,
+      description: todo.description,
+      deadLine: todo.deadline,
       isDone: false,
       file,
       id,

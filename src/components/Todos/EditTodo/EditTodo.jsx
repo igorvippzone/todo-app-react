@@ -4,13 +4,13 @@ import FormTodo from "../FormTodo/FormTodo";
 const EditTodo = ({ onClose, onChangeTodo, ...props }) => {
   const { title, description, deadLine } = props;
 
-  const changeHandler = (enteredTitle, enteredDescription, enteredDeadline) => {
-    if (!enteredTitle.trim() && !enteredDescription.trim()) return;
+  const changeHandler = (todo) => {
+    if (!todo.title.trim() && !todo.description.trim()) return;
 
     const changeTodo = {
-      title: enteredTitle,
-      description: enteredDescription,
-      deadLine: enteredDeadline,
+      title: todo.title,
+      description: todo.description,
+      deadLine: todo.deadline,
       isDone: props.isDone,
       id: props.id,
       file: props.file,

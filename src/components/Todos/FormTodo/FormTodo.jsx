@@ -1,9 +1,28 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 
 import Button from "../../UI/Button/Button";
 import Input from "../../UI/Input/Input";
 import TextArea from "../../UI/TextArea/TextArea";
 import s from "./FormTodo.module.css";
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "enteredTitle":
+      return { ...state, title: action.payload };
+
+    case "enteredDescription":
+      return { ...state, description: action.payload };
+
+    case "enteredDeadline":
+      return { ...state, deadline: action.payload };
+
+    case "enteredSelectFile":
+      return { ...state, selectFile: action.payload };
+
+    default:
+      return { ...state };
+  }
+};
 
 const FormTodo = ({
   onSubmit,
@@ -12,34 +31,35 @@ const FormTodo = ({
   deadline = "",
   buttonName = "Создать",
 }) => {
-  const [enteredTitle, setEnteredTitle] = useState(title);
-  const [enteredDescription, setEnteredDescription] = useState(description);
-  const [enteredDeadline, setEnteredDeadline] = useState(deadline);
-  const [selectFile, setSelectFile] = useState(null);
+  const initialState = {
+    title,
+    description,
+    deadline,
+    selectFile: null,
+  };
+
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const titleHandler = (e) => {
-    setEnteredTitle(e.target.value);
+    dispatch({ type: "enteredTitle", payload: e.target.value });
   };
 
   const descriptionHandler = (e) => {
-    setEnteredDescription(e.target.value);
+    dispatch({ type: "enteredDescription", payload: e.target.value });
   };
 
   const deadlineHandler = (e) => {
-    setEnteredDeadline(e.target.value);
+    dispatch({ type: "enteredDeadline", payload: e.target.value });
   };
 
   const fileHandler = (e) => {
-    let fileData = new FormData();
-    fileData.append("file", e.target.files[0]);
-
-    setSelectFile(e.target.files[0]);
+    dispatch({ type: "enteredSelectFile", payload: e.target.files[0] });
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
 
-    onSubmit(enteredTitle, enteredDescription, enteredDeadline, selectFile);
+    onSubmit(state);
   };
 
   return (
@@ -48,14 +68,14 @@ const FormTodo = ({
         id="name"
         label="Заголовок"
         type="text"
-        value={enteredTitle}
+        value={state.title}
         onChange={titleHandler}
         autoFocus={true}
       />
 
       <TextArea
         id="description"
-        value={enteredDescription}
+        value={state.description}
         placeholder="Описание..."
         onChange={descriptionHandler}
       ></TextArea>
@@ -63,7 +83,7 @@ const FormTodo = ({
       <Input
         id="deadline"
         label="Дата завершения"
-        value={enteredDeadline}
+        value={state.deadline}
         type="date"
         onChange={deadlineHandler}
       />
